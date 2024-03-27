@@ -46,9 +46,12 @@ label {
     font-weight: bold;
 }
 
-trough {
+scale trough,
+scale highlight {
+  border-radius: 5px;
   background-color: red;
 }
+
 
 .workspaces button.focused {
     border-bottom: 3px solid @theme_selected_bg_color;
