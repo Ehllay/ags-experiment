@@ -38,9 +38,17 @@ function ClientTitle() {
 
 
 function Clock() {
-    return Widget.Label({
+    return Widget.Box({
         class_name: "clock",
+        children: [
+      Widget.Icon({
+        icon: "clock",
+      }),
+      Widget.Label({
         label: date.bind(),
+      }),
+    ]
+
     })
 }
 
@@ -104,19 +112,18 @@ function Volume() {
         icon: Utils.watch(getIcon(), audio.speaker, getIcon),
     })
 
-    const slider = Widget.Slider({
-        hexpand: true,
-        draw_value: false,
-        on_change: ({ value }) => audio.speaker.volume = value,
-        setup: self => self.hook(audio.speaker, () => {
-            self.value = audio.speaker.volume || 0
-        }),
+    const circle = Widget.CircularProgress({
+        class_name: "circular-progress",
+        startAt: 0.75,
+        rounded: false,
+        inverted: false,
+        value: audio.speaker.bind('volume'),
+        child: icon,
     })
 
     return Widget.Box({
         class_name: "volume",
-        css: "min-width: 180px",
-        children: [icon, slider],
+        children: [circle],
     })
 }
 
