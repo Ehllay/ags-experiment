@@ -102,13 +102,14 @@ function Volume() {
     }
 
     function getIcon() {
-        const icon = audio.speaker.is_muted ? 0 : [101, 67, 34, 1, 0].find(
+        const icon = audio.speaker.isMuted ? 0 : [101, 67, 34, 1, 0].find(
             threshold => threshold <= audio.speaker.volume * 100)
 
         return `audio-volume-${icons[icon]}-symbolic`
     }
 
     const icon = Widget.Icon({
+        class_name: "volume-icon",
         icon: Utils.watch(getIcon(), audio.speaker, getIcon),
     })
 
@@ -121,9 +122,13 @@ function Volume() {
         child: icon,
     })
 
-    return Widget.Box({
-        class_name: "volume",
-        children: [circle],
+    return Widget.EventBox({
+        on_scroll_up: () => audio.speaker.volume += 0.01,
+        on_scroll_down: () => audio.speaker.volume -= 0.01,
+        on_middle_click: () => console.log(audio.speaker.is_muted),
+        child: Widget.Box({
+          children: [circle],
+    }),
     })
 }
 

@@ -47,13 +47,17 @@ label {
 }
 
 .circular-progress {
-    min-width: 50px;
-    min-height: 50px;
+    min-width: 40px;
+    min-height: 40px;
     border-width: 4px;
-    font-size: 15px;
+    font-size: 5px;
     margin: 4px;
-    background-color: #131313;
+    background-color: transparent;
     color: aqua;
+}
+.volume-icon {
+  color: @theme_fg_color;
+  font-size: 16px;
 }
 
 
