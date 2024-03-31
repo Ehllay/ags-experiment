@@ -16,7 +16,7 @@ box.right {
   border-bottom-width: 2px;
   border-bottom-style: solid;
   border-bottom-color: @theme_selected_fg_color;
-  background-color: alpha(@theme_bg_color, 0.5);
+  background-color: alpha(@theme_bg_color, 0.75);
 }
 
 box.center.empty {
