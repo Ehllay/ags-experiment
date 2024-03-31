@@ -102,7 +102,7 @@ function Volume() {
     }
 
     function getIcon() {
-        const icon = audio.speaker.isMuted ? 0 : [101, 67, 34, 1, 0].find(
+        const icon = audio.speaker.stream?.is_muted ? 0 : [101, 67, 34, 1, 0].find(
             threshold => threshold <= audio.speaker.volume * 100)
 
         return `audio-volume-${icons[icon]}-symbolic`
@@ -125,7 +125,7 @@ function Volume() {
     return Widget.EventBox({
         on_scroll_up: () => audio.speaker.volume += 0.01,
         on_scroll_down: () => audio.speaker.volume -= 0.01,
-        on_middle_click: () => console.log(audio.speaker.is_muted),
+        on_middle_click: () => Utils.exec('pactl set-sink-mute @DEFAULT_SINK@ toggle'),
         child: Widget.Box({
           children: [circle],
     }),
