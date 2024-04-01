@@ -11,7 +11,9 @@ box.workspaces,
 box.media,
 box.center,
 box.notification,
+box.systray,
 box.right {
+  min-height: 40px;
   border-radius: 10px;
   border-bottom-width: 2px;
   border-bottom-style: solid;
@@ -30,7 +32,6 @@ button {
     background-color: transparent;
 }
 button.media {
-  background-color: @theme_bg_color;
 }
 
 button:active {
@@ -59,7 +60,6 @@ label {
   color: @theme_fg_color;
   font-size: 16px;
 }
-
 
 .workspaces button.focused {
     border-bottom: 3px solid @theme_selected_bg_color;
