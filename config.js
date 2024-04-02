@@ -1,14 +1,15 @@
 import Bar from "./bar/Bar.js"
+import { NotificationPopups } from "./notifications/Notifications.js"
 import { applauncher } from "./applauncher/applauncher.js"
 
 App.config({
     style: "./style.css",
     windows: [
-        Bar(),
+        Bar(0),
+        //NotificationPopups(),
         applauncher,
 
         // you can call it, for each monitor
-        // Bar(0),
         // Bar(1)
     ],
 })

@@ -121,18 +121,21 @@ function Volume() {
         value: audio.speaker.bind('volume'),
         child: icon,
     })
-
+    
+    let vol = audio.speaker.bind('volume').transform(x => `${Math.round(x * 100)}%`);
+    
+    
     const revealer = Widget.Revealer({
     revealChild: false,
     transitionDuration: 1000,
     transition: 'slide_right',
-    child: Widget.Label(`${audio.speaker.volume * 100}%`),
+    child: Widget.Label({label: vol,}),
   })
 
     return Widget.EventBox({
         on_scroll_up: () => audio.speaker.volume += 0.01,
         on_scroll_down: () => audio.speaker.volume -= 0.01,
-        on_middle_click: () => Utils.exec('pactl set-sink-mute @DEFAULT_SINK@ toggle'),
+        on_middle_click: () => console.log(volume),
         on_hover: w => w.child.children[1].revealChild = true,
         on_hover_lost: w => w.child.children[1].revealChild = false,
         child: Widget.Box({
