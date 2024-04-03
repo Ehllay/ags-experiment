@@ -3,7 +3,7 @@ import { NotificationPopups } from "./notifications/Notifications.js"
 import { applauncher } from "./applauncher/applauncher.js"
 
 App.config({
-    style: "./style.css",
+    style: "./styles/style.css",
     windows: [
         Bar(0),
         //NotificationPopups(),

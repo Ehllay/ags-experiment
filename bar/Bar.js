@@ -2,6 +2,7 @@ const hyprland = await Service.import("hyprland")
 const notifications = await Service.import("notifications")
 const mpris = await Service.import("mpris")
 const audio = await Service.import("audio")
+const network = await Service.import("network")
 const battery = await Service.import("battery")
 const systemtray = await Service.import("systemtray")
 
@@ -127,7 +128,7 @@ function Volume() {
     
     const revealer = Widget.Revealer({
     revealChild: false,
-    transitionDuration: 1000,
+    transitionDuration: 750,
     transition: 'slide_right',
     child: Widget.Label({label: vol,}),
   })
@@ -165,6 +166,22 @@ function BatteryLabel() {
             }),
         ],
     })
+}
+
+function Network() {
+  if (network.bind("primary") == "wifi") {
+   return Widget.Box({
+      children: [
+        Widget.Icon({
+            icon: network.wifi.bind('icon_name'),
+        }),
+        Widget.Label({
+            label: network.wifi.bind('ssid')
+                .as(ssid => ssid || 'Unknown'),
+        }),
+      ],
+    })
+  }
 }
 
 
@@ -214,6 +231,7 @@ function Right() {
         children: [
             Notification(),
             SysTray(),
+            Network(),
             Volume(),
             Clock(),
             //BatteryLabel(),

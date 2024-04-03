@@ -1,0 +1,10 @@
+@import "./bar.css";
+@import "./notifications.css";
+
+* {
+  all: unset;
+}
+
+box {
+  margin: 1px 5px 1px 5px;
+}
