@@ -1,10 +1,7 @@
-@import "./bar.css";
-@import "./notifications.css";
-
+@import url(./bar.css);
+@import url(./notifications.css);
 * {
-  all: unset;
-}
+  all: unset; }
 
 box {
-  margin: 1px 5px 1px 5px;
-}
+  margin: 1px 5px 1px 5px; }

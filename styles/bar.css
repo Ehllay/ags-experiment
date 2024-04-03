@@ -54,7 +54,7 @@ label {
     font-size: 5px;
     margin: 4px;
     background-color: transparent;
-    color: aqua;
+    color: @theme_selected_bg_color;
 }
 
 .volume-icon {
@@ -67,6 +67,7 @@ label {
 }
 
 .client-title {
+    padding: 10px;
     color: @theme_selected_bg_color;
 }
 .client-title.empty {
