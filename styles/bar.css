@@ -23,10 +23,6 @@ box.right {
   background-color: alpha(@theme_bg_color, 0.75);
 }
 
-box.center.empty {
-  background-color: blue;
-}
-
 button {
     min-width: 40px;
     padding-left: 5px;
@@ -74,9 +70,6 @@ label {
 .client-title {
     padding: 10px;
     color: @theme_selected_bg_color;
-}
-.client-title.empty {
-  background-color: transparent;
 }
 
 .notification {
