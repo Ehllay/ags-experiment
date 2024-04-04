@@ -1,0 +1,6 @@
+* {
+  all: unset;
+}
+
+@import "./bar.css";
+@import "./notifications.css";

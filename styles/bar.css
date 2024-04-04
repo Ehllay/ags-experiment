@@ -3,6 +3,11 @@ window.bar {
     color: @theme_fg_color;
 }
 
+
+box {
+  margin: 1px 5px 1px 5px;
+}
+
 box.workspaces,
 box.media,
 box.center,
