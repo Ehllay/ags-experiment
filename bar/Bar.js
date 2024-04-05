@@ -75,21 +75,38 @@ function Notification() {
 
 
 function Media() {
-    const label = Utils.watch("", mpris, "player-changed", () => {
-        if (mpris.players[0]) {
-            const { track_artists, track_title } = mpris.players[0]
-            return `${track_artists.join(", ")} - ${track_title}`
-        } else {
-            return "Nothing is playing"
-        }
-    })
+  const label = Utils.watch("", mpris, "player-changed", () => {
+    if (mpris.players[0]) {
+        const { track_artists, track_title } = mpris.players[0]
+        return `${track_artists.join(", ")} - ${track_title}`
+    } else {
+        return "Nothing is playing"
+    }
+  })
 
-    return Widget.Button({
-        class_name: "media",
-        on_primary_click: () => mpris.getPlayer("")?.playPause(),
-        on_scroll_up: () => mpris.getPlayer("")?.next(),
-        on_scroll_down: () => mpris.getPlayer("")?.previous(),
-        child: Widget.Label({ label }),
+  const icon = Utils.watch("", mpris, "player-changed", () => {
+    if (mpris.players[0]) {
+      switch (mpris.getPlayer("")?.play_back_status) {
+        case "Playing": return "media-playback-pause-symbolic";
+        case "Paused": return "media-playback-start-symbolic";
+        default: return "audio-x-generic-symbolic";
+      }
+    } else {
+      return "media-playback-start-symbolic";
+    }
+  })
+
+    return Widget.Box({
+      class_name: "media",
+      tooltip_text: label, 
+      children: [
+        Widget.Button({
+         on_primary_click: () => mpris.getPlayer("")?.playPause(),
+         on_scroll_up: () => mpris.getPlayer("")?.next(),
+         on_scroll_down: () => mpris.getPlayer("")?.previous(),
+         child: Widget.Icon({icon})
+      }),
+      ]
     })
 }
 
