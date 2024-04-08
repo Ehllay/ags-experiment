@@ -32,9 +32,12 @@ function Workspaces() {
 
 function ClientTitle() {
     return Widget.Label({
-        class_name: "client-title",
-        label: hyprland.active.client.bind('title'),
-        visible: hyprland.active.client.bind('address').as(addr => !!addr),    
+      truncate: 'end',
+      maxWidthChars: 100,
+      wrap: true,
+      class_name: "client-title",
+      label: hyprland.active.client.bind('title'),
+      visible: hyprland.active.client.bind('address').as(addr => !!addr),    
   })
 }
 
@@ -44,7 +47,7 @@ function Clock() {
         class_name: "clock",
         children: [
       Widget.Icon({
-        icon: "clock",
+        icon: "appointment-soon-symbolic",
       }),
       Widget.Label({
         label: date.bind(),
@@ -98,14 +101,30 @@ function Media() {
 
     return Widget.Box({
       class_name: "media",
+      hpack: "center",
+      // css: mpris.getPlayer("").bind("cover_path").transform(p => `
+      //       background-image: url('${p}');
+      //       background-size: contain;
+      // `),
       tooltip_text: label, 
       children: [
         Widget.Button({
-         on_primary_click: () => mpris.getPlayer("")?.playPause(),
-         on_scroll_up: () => mpris.getPlayer("")?.next(),
-         on_scroll_down: () => mpris.getPlayer("")?.previous(),
-         child: Widget.Icon({icon})
-      }),
+          class_name: "media-button",
+          on_primary_click: () => mpris.getPlayer("")?.previous(),
+          child: Widget.Icon("media-skip-backward-symbolic")
+        }),
+        Widget.Button({
+          class_name: "media-button",
+          on_primary_click: () => mpris.getPlayer("")?.playPause(),
+          on_scroll_up: () => mpris.getPlayer("")?.next(),
+          on_scroll_down: () => mpris.getPlayer("")?.previous(),
+          child: Widget.Icon({icon})
+        }),
+        Widget.Button({
+          class_name: "media-button",
+          on_primary_click: () => mpris.getPlayer("")?.next(),
+          child: Widget.Icon("media-skip-forward-symbolic")
+        }),
       ]
     })
 }

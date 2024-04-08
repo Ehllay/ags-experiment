@@ -2,5 +2,6 @@
   all: unset;
 }
 
+@import "../../matugen/colors/colors-waybar.css";
 @import "./bar.css";
 @import "./notifications.css";

@@ -1,6 +1,6 @@
 window.bar {
     background-color: transparent;
-    color: @theme_fg_color;
+    color: @on_surface;
 }
 
 tooltip,
@@ -9,10 +9,10 @@ box {
 }
 
 tooltip {
-  background-color: @theme_bg_color;
+  background-color: @surface;
   border-bottom-width: 2px;
   border-bottom-style: solid;
-  border-bottom-color: alpha(@insensitive_base_color, 0.75);
+  border-bottom-color: alpha(@background, 0.75);
 }
 
 box.workspaces,
@@ -26,27 +26,45 @@ box.right {
   border-radius: 10px;
   border-bottom-width: 2px;
   border-bottom-style: solid;
-  border-bottom-color: alpha(@insensitive_base_color, 0.75);
-  background-color: alpha(@theme_bg_color, 0.75);
+  border-bottom-color: alpha(@background, 0.75);
+  background-color: alpha(@surface, 0.75);
+}
+
+box.media {
+  border-radius: 25px;
+  padding: 0px 5px;
+}
+
+box.clock {
+  color: @tertiary;
+}
+
+.media-button {
+  margin: 3px 3px;
+  padding: 0px 5px;
+  border-radius: 50px;
+  outline: 1px double @primary;
+  background-color: @on_tertiary;
 }
 
 button {
-    min-width: 40px;
+    min-width: 32px;
     padding-left: 5px;
     padding-top: 0;
     padding-bottom: 0;
     background-color: transparent;
+    background-size: 20px;
     border-radius: 5px;
     transition: 0.2s;
     transition-timing-function: ease-in-out;
 }
 
 button:active {
-    background-color: @theme_selected_bg_color;
+  color: @surface_bright;
 }
 
 button:hover {
-  background-color: @theme_bg_color;
+  background-color: @surface;
 }
 
 label {
@@ -55,31 +73,32 @@ label {
 }
 
 .circular-progress {
-    min-width: 40px;
-    min-height: 40px;
+    min-width: 36px;
+    min-height: 36px;
     border-width: 4px;
     font-size: 5px;
     margin: 4px;
     background-color: transparent;
-    color: @theme_selected_bg_color;
+    color: @primary;
 }
 
 .volume-icon {
-  color: @theme_fg_color;
+  color: @on_surface;
   font-size: 16px;
 }
 
 .workspaces button.focused {
-    border-bottom: 3px solid @theme_selected_bg_color;
+  border-bottom: 3px solid @primary;
+  color: @tertiary;
 }
 
 .client-title {
     padding: 10px;
-    color: @theme_selected_bg_color;
+    color: @secondary;
 }
 
 .notification {
-    color: yellow;
+    color: @tertiary;
 }
 
 levelbar block,
