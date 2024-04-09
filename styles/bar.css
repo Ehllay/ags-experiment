@@ -110,6 +110,9 @@ label {
     color: @secondary;
 }
 
+box.center {
+  transition: 1.5s;
+}
 box.center.empty {
   background-color: transparent;
   border-color: transparent;
