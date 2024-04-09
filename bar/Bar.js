@@ -14,6 +14,13 @@ const date = Variable("", {
 // so to make a reuseable widget, make it a function
 // then you can simply instantiate one by calling it
 
+function Launcher() {
+  return Widget.Button({
+    class_name: "launcher",
+    child: Widget.Label(""),
+  })
+}
+
 function Workspaces() {
     const activeId = hyprland.active.workspace.bind("id")
     const workspaces = hyprland.bind("workspaces")
@@ -37,7 +44,6 @@ function ClientTitle() {
       wrap: true,
       class_name: "client-title",
       label: hyprland.active.client.bind('title'),
-      visible: hyprland.active.client.bind('address').as(addr => !!addr),    
   })
 }
 
@@ -225,6 +231,7 @@ function Network() {
 function SysTray() {
     const items = systemtray.bind("items")
         .as(items => items.map(item => Widget.Button({
+            class_name: "systray",
             child: Widget.Icon({ icon: item.bind("icon") }),
             on_primary_click: (_, event) => item.activate(event),
             on_secondary_click: (_, event) => item.openMenu(event),
@@ -232,7 +239,6 @@ function SysTray() {
         })))
 
     return Widget.Box({
-      class_name: "systray",
         children: items,
     })
 }
@@ -244,6 +250,7 @@ function Left() {
         class_name: "left",
         spacing: 8,
         children: [
+            Launcher(),
             Workspaces(),
             Media(),
         ],
@@ -257,7 +264,7 @@ function Center() {
         children: [
             ClientTitle(),
         ],
-    })
+    }).hook(hyprland.active.client, (title) => {title.toggleClassName("empty", hyprland.active.client.address === "0x")})
 }
 
 function Right() {

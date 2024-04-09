@@ -15,7 +15,7 @@ const AppItem = app => Widget.Button({
                 size: 42,
             }),
             Widget.Label({
-                class_name: "title",
+                class_name: "applauncher-title",
                 label: app.name,
                 xalign: 0,
                 vpack: "center",

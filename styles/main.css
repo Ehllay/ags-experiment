@@ -2,6 +2,15 @@
   all: unset;
 }
 
+.corner {
+  background-color: alpha(@surface, 0.75);
+  border-radius: 1rem;
+}
+
+.angle {
+  background-color: alpha(@surface, 0.75);
+}
+
 @import "../../matugen/colors/colors-waybar.css";
 @import "./bar.css";
 @import "./notifications.css";

@@ -5,7 +5,7 @@ window.bar {
 
 tooltip,
 box {
-  margin: 1px 5px 1px 5px;
+  margin: 2px 5px 1px 5px;
 }
 
 tooltip {
@@ -15,6 +15,7 @@ tooltip {
   border-bottom-color: alpha(@background, 0.75);
 }
 
+box.launcher,
 box.workspaces,
 box.media,
 box.center,
@@ -28,6 +29,18 @@ box.right {
   border-bottom-style: solid;
   border-bottom-color: alpha(@background, 0.75);
   background-color: alpha(@surface, 0.75);
+}
+
+button.launcher {
+  background-color: alpha(@surface, 0.75);
+  border-radius: 15px;
+  font-family: "JetbrainsMono NF", monospace;
+  padding-right: 10px;
+  font-size: 32px;
+  color: @primary;
+}
+button.launcher:hover {
+  color: @source-color;
 }
 
 box.media {
@@ -60,11 +73,11 @@ button {
 }
 
 button:active {
-  color: @surface_bright;
+  color: @primary;
 }
 
 button:hover {
-  background-color: @surface;
+  background-color: @surface_container_highest;
 }
 
 label {
@@ -95,6 +108,40 @@ label {
 .client-title {
     padding: 10px;
     color: @secondary;
+}
+
+box.center.empty {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.systray {
+  background-color: @background;
+}
+
+.systray:hover {
+  background-color: @on_primary;
+}
+
+menu {
+  padding: 10px;
+  font-size: 16px;
+  background-color: @surface;
+  color: @on_surface;
+  border: 2px solid @primary;
+  border-radius: 10px;
+}
+
+menuitem {
+  padding: 0 8px;
+  border-radius: 5px;
+  animation: menuItemHoverOut 0.1s linear 1;
+  transition: 0.2s;
+}
+menuitem:hover {
+  color: @primary_fixed_dim;
+  background-color: @surface_variant;
+  animation: menuItemHoverOut 0.1s linear 1;
 }
 
 .notification {
