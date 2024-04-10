@@ -1,0 +1,8 @@
+window.applauncher {
+  padding: 0px;
+  min-height: 40px;
+  border-radius: 10px;
+  border: 2px solid @primary;
+  background-image: linear-gradient(@surface_container_lowest, @surface);
+  background-size: cover;
+}

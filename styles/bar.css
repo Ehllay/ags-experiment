@@ -9,7 +9,9 @@ box {
 }
 
 tooltip {
-  background-color: @surface;
+  background-image: linear-gradient(@surface_container_lowest, alpha(@surface, 0.75));
+  background-size: cover;
+  border-radius: 10px;
   border-bottom-width: 2px;
   border-bottom-style: solid;
   border-bottom-color: alpha(@background, 0.75);
@@ -28,14 +30,16 @@ box.right {
   border-bottom-width: 2px;
   border-bottom-style: solid;
   border-bottom-color: alpha(@background, 0.75);
-  background-color: alpha(@surface, 0.75);
+  background-image: linear-gradient(@surface_container_lowest, alpha(@surface, 0.75));
+  background-size: cover;
 }
 
 button.launcher {
-  background-color: alpha(@surface, 0.75);
+  background-image: linear-gradient(@surface_container_lowest, alpha(@surface, 0.75));
+  background-size: cover;
   border-radius: 15px;
   font-family: "JetbrainsMono NF", monospace;
-  padding-right: 10px;
+  padding-right: 11px;
   font-size: 32px;
   color: @primary;
 }
@@ -114,22 +118,23 @@ box.center {
   transition: 1.5s;
 }
 box.center.empty {
-  background-color: transparent;
+  background-image: none;
   border-color: transparent;
 }
 
 .systray {
-  background-color: @background;
+  background-color: transparent;
 }
 
 .systray:hover {
-  background-color: @on_primary;
+  background-color: @surface_container_highest;
 }
 
 menu {
-  padding: 10px;
-  font-size: 16px;
-  background-color: @surface;
+  padding: 12px;
+  font-size: 18px;
+  background-image: linear-gradient(@surface_container_lowest, @surface);
+  background-size: cover;
   color: @on_surface;
   border: 2px solid @primary;
   border-radius: 10px;
@@ -144,8 +149,16 @@ menuitem {
 menuitem:hover {
   color: @primary_fixed_dim;
   background-color: @surface_variant;
-  animation: menuItemHoverOut 0.1s linear 1;
 }
+
+separator {
+  background-image: linear-gradient(@on_surface, @outline);
+  background-size: 4px 1px;
+  min-width: 1px;
+  min-height: 1px;
+  margin: 4px 1px;
+}
+
 
 .notification {
     color: @tertiary;

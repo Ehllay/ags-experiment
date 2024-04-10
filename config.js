@@ -3,6 +3,7 @@ import Gio from "gi://Gio";
 import Bar from "./bar/Bar.js"
 import { NotificationPopups } from "./notifications/Notifications.js"
 import { applauncher } from "./applauncher/applauncher.js"
+import { powermenu } from "./powermenu/powermenu.js";
 
 App.config({
     style: "./styles/main.css",
@@ -10,6 +11,7 @@ App.config({
         Bar(0),
         //NotificationPopups(),
         applauncher,
+        powermenu,
 
         // you can call it, for each monitor
         // Bar(1)
