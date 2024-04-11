@@ -1,0 +1,25 @@
+.powermenu {
+  padding: 15px;
+  background: 
+    linear-gradient(@surface_container_lowest, @surface) padding-box,
+    linear-gradient(to bottom right, @primary, @secondary) border-box;
+
+  border: 4px solid transparent;
+  border-radius: 15px;
+  font-size: 30px;
+  margin: 20px;
+}
+.powermenu-box {
+  margin: 20px;
+}
+
+.powermenu-buttons:hover {
+  color: @primary;
+}
+.powermenu-buttons:active {
+  color: @primary_fixed;
+}
+
+.powermenu-icons {
+  font-size: 150px;
+}

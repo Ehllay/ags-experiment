@@ -3,6 +3,7 @@ const WINDOW_NAME = "applauncher"
 
 /** @param {import('resource:///com/github/Aylur/ags/service/applications.js').Application} app */
 const AppItem = app => Widget.Button({
+    class_name: "applauncher-button",
     on_clicked: () => {
         App.closeWindow(WINDOW_NAME)
         app.launch()
@@ -44,6 +45,8 @@ const Applauncher = ({ width = 500, height = 500, spacing = 12 }) => {
 
     // search entry
     const entry = Widget.Entry({
+        class_name: "applauncher-entry",
+        placeholder_text: "Search",
         hexpand: true,
         css: `margin-bottom: ${spacing}px;`,
 

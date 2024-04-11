@@ -1,8 +1,31 @@
 window.applauncher {
   padding: 0px;
   min-height: 40px;
-  border-radius: 10px;
+    background: 
+    linear-gradient(@surface_container_lowest, @surface) padding-box,
+    linear-gradient(to bottom right, @primary, @secondary) border-box;
+
+  border-radius: 15px;
+  border: 2px solid transparent;
+}
+
+.applauncher-button {
+  background-color: @surface_container;
+  padding: 0 8px;
+  border-radius: 5px;
+  animation: menuItemHoverOut 0.1s linear 1;
+  transition: 0.2s;
+}
+.applauncher-button:hover {
+  color: @primary_fixed_dim;
+  background-color: @surface_variant;
+}
+
+.applauncher-entry {
+  padding: 5px;
+  font-weight: bold;
+  font-size: 24px;
+  border-radius: 5px;
+  /* TODO: Gradient border */
   border: 2px solid @primary;
-  background-image: linear-gradient(@surface_container_lowest, @surface);
-  background-size: cover;
 }
