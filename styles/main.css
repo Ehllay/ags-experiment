@@ -11,7 +11,7 @@
   background-color: alpha(@surface, 0.75);
 }
 
-@import "../../matugen/colors/colors-waybar.css";
+@import "../../matugen/colors/colors-css.css";
 @import "./bar.css";
 @import "./notifications.css";
 @import "./applauncher.css";

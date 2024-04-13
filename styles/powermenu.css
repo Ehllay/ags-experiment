@@ -9,13 +9,24 @@
   font-size: 30px;
   margin: 20px;
 }
+
 .powermenu-box {
   margin: 20px;
+  padding: 25px;
+  padding-bottom: 0px;
 }
 
-.powermenu-buttons:hover {
-  color: @primary;
+.powermenu-buttons {
+  min-height: 150px;
+  min-width: 150px;
 }
+
+.powermenu-buttons:hover .powermenu-icons {
+  transition: 0.2s cubic-bezier(.55,0.0,.28,1.682);
+  color: @primary;
+  font-size: 130px;
+}
+
 .powermenu-buttons:active {
   color: @primary_fixed;
 }
