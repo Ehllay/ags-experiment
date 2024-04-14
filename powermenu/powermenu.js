@@ -2,13 +2,13 @@ const WINDOW_NAME = "powermenu"
 
 function PowerButtons(command, icon) {
   return Widget.Button({
-        class_name: "powermenu-buttons",
-        onClicked: () => Utils.execAsync(command),
-        child: Widget.Icon({
-          class_name: "powermenu-icons",
-          icon: icon,
-        }),
-      })
+    class_name: "powermenu-buttons",
+    onClicked: () => Utils.execAsync(command),
+    child: Widget.Icon({
+      class_name: "powermenu-icons",
+      icon: icon,
+    }),
+  })
 }
 
 export const powermenu = Widget.Window({
@@ -39,4 +39,9 @@ export const powermenu = Widget.Window({
       Widget.Label("Powermenu")
     ]
   }),
-  })
+})
+.keybind("s", (_,event) => { Utils.execAsync("systemctl poweroff") })
+.keybind("r", (_,event) => { Utils.execAsync("systemctl reboot") })
+.keybind("u", (_,event) => { Utils.execAsync("systemctl suspend") })
+.keybind("l", (_,event) => { Utils.execAsync("swaylock") })
+.keybind("e", (_,event) => { Utils.execAsync("hyprctl dispatch exit 0") })
