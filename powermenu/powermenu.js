@@ -36,7 +36,6 @@ export const powermenu = Widget.Window({
           PowerButtons(`swaylock`, "system-lock-screen-symbolic"),
         ]
       }),
-      Widget.Label("Powermenu")
     ]
   }),
 })
