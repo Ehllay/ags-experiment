@@ -105,14 +105,19 @@ function Media() {
     }
   })
 
-    return Widget.Box({
+
+  return Widget.EventBox({
+    //on_hover: () => App.openWindow('Media()'),
+    //on_hover_lost: () => App.closeWindow('Media()'),
+    tooltip_text: label, 
+    child: Widget.Box({
       class_name: "media",
       hpack: "center",
       // css: mpris.getPlayer("").bind("cover_path").transform(p => `
       //       background-image: url('${p}');
       //       background-size: contain;
-      // `),
-      tooltip_text: label, 
+      // `)
+      visible: mpris.bind("players").as(p => p.length > 0),
       children: [
         Widget.Button({
           class_name: "media-button",
@@ -133,6 +138,7 @@ function Media() {
         }),
       ]
     })
+  })
 }
 
 
@@ -172,7 +178,7 @@ function Volume() {
     const revealer = Widget.Revealer({
     revealChild: false,
     transitionDuration: 750,
-    transition: 'slide_right',
+    transition: 'slide_left',
     child: Widget.Label({label: vol,}),
   })
 
@@ -261,10 +267,11 @@ function Center() {
     return Widget.Box({
         class_name: "center",
         spacing: 8,
+        visible: hyprland.active.client.bind("title").as(t => t != ""),
         children: [
             ClientTitle(),
         ],
-    }).hook(hyprland.active.client, (title) => {title.toggleClassName("empty", hyprland.active.client.address === "0x")})
+    })
 }
 
 function Right() {

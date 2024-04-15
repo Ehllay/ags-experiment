@@ -50,6 +50,7 @@ button.launcher:hover {
 box.media {
   border-radius: 25px;
   padding: 0px 5px;
+  transition: 0.2s;
 }
 
 box.clock {
@@ -116,10 +117,6 @@ label {
 
 box.center {
   transition: 1.5s;
-}
-box.center.empty {
-  background-image: none;
-  border-color: transparent;
 }
 
 .systray {
