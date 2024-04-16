@@ -10,6 +10,10 @@ const date = Variable("", {
     poll: [1000, 'date "+%H:%M"'],
 })
 
+const update_count = Variable("", {
+    poll: [300000, 'bash -c "checkupdates | wc -l"'],
+})
+
 // widgets can be only assigned as a child in one container
 // so to make a reuseable widget, make it a function
 // then you can simply instantiate one by calling it
@@ -36,6 +40,23 @@ function Workspaces() {
     })
 }
 
+function Updates() {
+  return Widget.Button({
+    class_name: "updates",
+    visible: update_count.bind().as(t => t != 0),
+    child: Widget.Box({
+      visible: false,
+      children: [
+        Widget.Icon({
+          icon: "software-update-available-symbolic",
+        }),
+        Widget.Label({
+          label: update_count.bind(),
+        }),
+      ]
+    })
+  })
+}
 
 function ClientTitle() {
     return Widget.Label({
@@ -252,15 +273,16 @@ function SysTray() {
 
 // layout of the bar
 function Left() {
-    return Widget.Box({
-        class_name: "left",
-        spacing: 8,
-        children: [
-            Launcher(),
-            Workspaces(),
-            Media(),
-        ],
-    })
+  return Widget.Box({
+    class_name: "left",
+    spacing: 8,
+    children: [
+      Launcher(),
+      Workspaces(),
+      Media(),
+      Updates(),
+    ],
+  })
 }
 
 function Center() {

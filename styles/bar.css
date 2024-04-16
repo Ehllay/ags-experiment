@@ -4,8 +4,10 @@ window.bar {
 }
 
 tooltip,
-box {
-  margin: 2px 5px 1px 5px;
+box.left,
+box.center,
+box.right {
+  margin: 5px 5px 0px 5px;
 }
 
 tooltip {
@@ -19,6 +21,7 @@ tooltip {
 
 box.launcher,
 box.workspaces,
+button.updates,
 box.media,
 box.center,
 box.notification,
@@ -51,6 +54,12 @@ box.media {
   border-radius: 25px;
   padding: 0px 5px;
   transition: 0.2s;
+}
+
+button.updates {
+  padding: 0px 5px 0px 10px;
+  color: @error;
+  border: 2px solid @error;
 }
 
 box.clock {
