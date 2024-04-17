@@ -40,9 +40,15 @@ function Workspaces() {
     })
 }
 
+function RunUpdate() {
+  return Utils.execAsync(`kitty -e bash -c paru && notify-send -i /usr/share/icons/Papirus-Dark/16x16/actions/system-upgrade.svg 'The system has been upgraded'`)
+}
+
 function Updates() {
+ 
   return Widget.Button({
     class_name: "updates",
+    on_clicked: () => RunUpdate(),
     visible: update_count.bind().as(t => t != 0),
     child: Widget.Box({
       visible: false,
