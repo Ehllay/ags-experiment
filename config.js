@@ -4,6 +4,7 @@ import Bar from "./bar/Bar.js"
 import { NotificationPopups } from "./notifications/Notifications.js"
 import { applauncher } from "./applauncher/applauncher.js"
 import { powermenu } from "./powermenu/powermenu.js";
+import { dashboard } from "./dashboard/dashboard.js";
 
 App.config({
     style: "./styles/main.css",
@@ -12,6 +13,7 @@ App.config({
         //NotificationPopups(),
         applauncher,
         powermenu,
+        dashboard,
 
         // you can call it, for each monitor
         // Bar(1)
