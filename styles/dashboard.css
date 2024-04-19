@@ -30,6 +30,7 @@
 
 .dashboard-box scale {
   border-radius: 10px;
+  margin: 10px;
   background-color: @surface_container_highest;
   color: @primary;
 }
@@ -38,3 +39,7 @@
   border-radius: 10px;
 }
 
+.dashboard-volume-icons {
+  padding: 0 10px;
+  color: @primary;
+}

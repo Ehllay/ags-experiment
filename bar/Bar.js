@@ -134,16 +134,10 @@ function Media() {
 
 
   return Widget.EventBox({
-    //on_hover: () => App.openWindow('Media()'),
-    //on_hover_lost: () => App.closeWindow('Media()'),
     tooltip_text: label, 
     child: Widget.Box({
       class_name: "media",
       hpack: "center",
-      // css: mpris.getPlayer("").bind("cover_path").transform(p => `
-      //       background-image: url('${p}');
-      //       background-size: contain;
-      // `)
       visible: mpris.bind("players").as(p => p.length > 0),
       children: [
         Widget.Button({
@@ -212,7 +206,7 @@ function Volume() {
     return Widget.EventBox({
         on_scroll_up: () => audio.speaker.volume += 0.01,
         on_scroll_down: () => audio.speaker.volume -= 0.01,
-        on_middle_click: () => console.log(volume),
+        on_middle_click: () => Utils.exec('pactl set-sink-mute @DEFAULT_SINK@ toggle'),
         on_hover: w => w.child.children[1].revealChild = true,
         on_hover_lost: w => w.child.children[1].revealChild = false,
         child: Widget.Box({
