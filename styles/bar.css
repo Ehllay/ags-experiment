@@ -75,15 +75,18 @@ box.clock {
 }
 
 button {
-    min-width: 32px;
-    padding-left: 5px;
-    padding-top: 0;
-    padding-bottom: 0;
     background-color: transparent;
-    background-size: 20px;
     border-radius: 5px;
     transition: 0.2s;
     transition-timing-function: ease-in-out;
+}
+
+button.launcher,
+button.media-button,
+.workspaces button,
+.systray {
+  padding-left: 5px;
+  min-width: 32px;
 }
 
 button:active {
@@ -136,6 +139,15 @@ box.center {
   background-color: @surface_container_highest;
 }
 
+.quick-settings box {
+  transition: 0.5s;
+  padding: 0 5px;
+}
+.quick-settings:hover {
+  background-color: @surface_container_highest;
+  border-radius: 5px;
+}
+
 menu {
   padding: 15px;
   font-size: 18px;
@@ -153,6 +165,7 @@ menuitem {
   animation: menuItemHoverOut 0.1s linear 1;
   transition: 0.2s;
 }
+
 menuitem:hover {
   color: @primary_fixed_dim;
   background-color: @surface_variant;

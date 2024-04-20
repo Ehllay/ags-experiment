@@ -6,6 +6,8 @@ const network = await Service.import("network")
 const battery = await Service.import("battery")
 const systemtray = await Service.import("systemtray")
 
+import { Dashboard } from "../dashboard/dashboard.js"
+
 const date = Variable("", {
     poll: [1000, 'date "+%H:%M"'],
 })
@@ -31,7 +33,7 @@ function Workspaces() {
         .as(ws => ws.map(({ id }) => Widget.Button({
             on_clicked: () => hyprland.messageAsync(`dispatch workspace ${id}`),
             child: Widget.Label(`${id}`),
-            class_name: activeId.as(i => `${i === id ? "focused" : ""}`),
+            class_name: activeId.as(i => `${i === id ? "focused" : "workspaces"}`),
         })))
 
     return Widget.Box({
@@ -239,19 +241,13 @@ function BatteryLabel() {
 }
 
 function Network() {
-  if (network.bind("primary") == "wifi") {
    return Widget.Box({
       children: [
         Widget.Icon({
-            icon: network.wifi.bind('icon_name'),
-        }),
-        Widget.Label({
-            label: network.wifi.bind('ssid')
-                .as(ssid => ssid || 'Unknown'),
+            icon: network.wired.bind('icon_name'),
         }),
       ],
     })
-  }
 }
 
 
@@ -268,6 +264,19 @@ function SysTray() {
     return Widget.Box({
         children: items,
     })
+}
+
+function QuickSettings() {
+  return Widget.EventBox({
+    class_name: "quick-settings",
+    on_secondary_click: () => App.toggleWindow("dashboard"),
+    child: Widget.Box({
+      children: [
+        Network(),
+        Volume(),
+      ],
+    })
+  })
 }
 
 
@@ -304,10 +313,9 @@ function Right() {
         children: [
             Notification(),
             SysTray(),
-            Network(),
-            Volume(),
-            Clock(),
             //BatteryLabel(),
+            QuickSettings(),
+            Clock(),
         ],
     })
 }

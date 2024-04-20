@@ -59,19 +59,23 @@ function VolumeBox() {
 }
 
 
-export const dashboard = Widget.Window({
-  name: WINDOW_NAME,
-  anchor: ['top', 'right'],
-  margins: 6,
-  keymode: "none",
-  visible: "false",
-  child: Widget.Box({
-    class_name: "dashboard",
-    vertical: true,
-    children: [
-      VolumeBox(),
-      Media(),
-    ]
-  }),
-
-})
+export function Dashboard() {
+  return Widget.Window({
+    name: WINDOW_NAME,
+    anchor: ['top', 'right'],
+    margins: 6,
+    keymode: "on-demand",
+    visible: "false",
+    setup: self => self.keybind("Escape", () => {
+      App.closeWindow(WINDOW_NAME)
+    }),
+    child: Widget.Box({
+      class_name: "dashboard",
+      vertical: true,
+      children: [
+        VolumeBox(),
+        Media(),
+      ]
+    }),
+  })
+}
