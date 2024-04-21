@@ -2,12 +2,13 @@ const audio = await Service.import('audio')
 
 import { Media } from "../media/Media.js"
 
-
 const WINDOW_NAME = "dashboard"
 
 const date = Variable("", {
     poll: [43200000, `bash -c "LC_TIME=en_US.UTF-8 date +'%A, %d %B, %Y'"`],
 })
+
+const host = Utils.exec(`bash -c "hostnamectl hostname"`)
 
 function Avatar() {
   return Widget.Box({
@@ -20,12 +21,17 @@ function Avatar() {
 function Date() {
   return Widget.Box({
     class_name: "dashboard-date",
+    vertical: true,
     hexpand: false,
     vexpand: false,
     vpack: "center",
+    halign: "start",
     children: [
       Widget.Label({
         label: date.bind(),
+      }),
+      Widget.Label({
+        label: `Welcome to ${host}`,
       }),
     ]
   })
@@ -36,8 +42,8 @@ function PowermenuButton() {
     class_name: "dashboard-power-button",
     vexpand: false,
     vpack: "center",
+    hpack: "end",
     child: Widget.Icon("system-log-out-symbolic"),
-    cursor: "pointer",
     on_clicked: () => App.toggleWindow("powermenu"),
   })
 }
