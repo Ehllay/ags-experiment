@@ -5,6 +5,43 @@ import { Media } from "../media/Media.js"
 
 const WINDOW_NAME = "dashboard"
 
+const date = Variable("", {
+    poll: [43200000, `bash -c "LC_TIME=en_US.UTF-8 date +'%A, %d %B, %Y'"`],
+})
+
+function Avatar() {
+  return Widget.Box({
+    class_name: "dashboard-image",
+    vpack: "start",
+    css: `background-image: url('${App.configDir}/../../.face.icon')`
+  })
+}
+
+function Date() {
+  return Widget.Box({
+    class_name: "dashboard-date",
+    hexpand: false,
+    vexpand: false,
+    vpack: "center",
+    children: [
+      Widget.Label({
+        label: date.bind(),
+      }),
+    ]
+  })
+}
+
+function PowermenuButton() {
+  return Widget.Button({
+    class_name: "dashboard-power-button",
+    vexpand: false,
+    vpack: "center",
+    child: Widget.Icon("system-log-out-symbolic"),
+    cursor: "pointer",
+    on_clicked: () => App.toggleWindow("powermenu"),
+  })
+}
+
 function VolumeSlider(type = 'speaker') {
   const icons = {
         101: "overamplified",
@@ -36,6 +73,7 @@ function VolumeSlider(type = 'speaker') {
       icon,
       Widget.Slider({
         hexpand: true,
+        cursor: "ew-resize",
         drawValue: false,
         onChange: ({ value }) => audio[type].volume = value,
         value: audio[type].bind('volume'),
@@ -73,6 +111,14 @@ export function Dashboard() {
       class_name: "dashboard",
       vertical: true,
       children: [
+        Widget.Box({
+          hpack: "fill",
+          children: [
+            Avatar(),
+            Date(),
+            PowermenuButton(),
+          ]
+        }),
         VolumeBox(),
         Media(),
       ]

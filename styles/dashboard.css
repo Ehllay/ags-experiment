@@ -17,6 +17,35 @@
   background: @surface_container_high;
   box-shadow: 0px 1px @shadow;
 }
+
+.dashboard-image { 
+  margin: 10px;
+  min-width: 100px;
+  min-height: 100px;
+  background-size: 100px;
+  background-position: center;
+  border-radius: 15px;
+  border: 4px solid @outline;
+}
+
+.dashboard-date {
+  margin: 10px;
+  padding: 5px;
+  font-size: 16px;
+}
+
+.dashboard-power-button {
+  margin: 10px;
+  padding: 5px;
+  border-radius: 10px;
+  font-size: 36px;
+  background-color: @surface_container;
+  box-shadow: 0px 1px @shadow;
+}
+.dashboard-power-button:hover {
+  color: @primary;
+}
+
 /*
 .dashboard-box slider {
   min-width: 8px;
