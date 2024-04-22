@@ -4,11 +4,22 @@ import { Media } from "../media/Media.js"
 
 const WINDOW_NAME = "dashboard"
 
+function upperCaseFirstLetter(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
 const date = Variable("", {
-    poll: [43200000, `bash -c "LC_TIME=en_US.UTF-8 date +'%A, %d %B, %Y'"`],
+  poll: [43_200_000, `bash -c "LC_TIME=en_US.UTF-8 date +'%A, %d %B, %Y'"`],
 })
 
-const host = Utils.exec(`bash -c "hostnamectl hostname"`)
+const uptime = Variable("", {
+  poll: [60_000, "uptime -p", time =>
+        "󰔟 ".concat(time.replace(/up|,/g, '').replace(/\b(days?|hours?|minutes?)\b/g, match => match.charAt(0)).trim()),
+    ],
+});
+
+const host = upperCaseFirstLetter(Utils.exec(`bash -c "hostnamectl hostname"`))
+const user = upperCaseFirstLetter(Utils.exec(`whoami`))
 
 function Avatar() {
   return Widget.Box({
@@ -18,12 +29,10 @@ function Avatar() {
   })
 }
 
-function Date() {
+function Info() {
   return Widget.Box({
     class_name: "dashboard-date",
     vertical: true,
-    hexpand: false,
-    vexpand: false,
     vpack: "center",
     halign: "start",
     children: [
@@ -31,7 +40,14 @@ function Date() {
         label: date.bind(),
       }),
       Widget.Label({
-        label: `Welcome to ${host}`,
+        justification: "left",
+        class_name: "dashboard-info",
+        label: uptime.bind(),
+      }),
+      Widget.Label({
+        justification: "left",
+        class_name: "dashboard-info",
+        label: ` ${user}\n󰍹 ${host}`,
       }),
     ]
   })
@@ -117,13 +133,10 @@ export function Dashboard() {
       class_name: "dashboard",
       vertical: true,
       children: [
-        Widget.Box({
-          hpack: "fill",
-          children: [
-            Avatar(),
-            Date(),
-            PowermenuButton(),
-          ]
+        Widget.CenterBox({
+          start_widget: Avatar(),
+          center_widget: Info(),
+          end_widget: PowermenuButton(),
         }),
         VolumeBox(),
         Media(),
