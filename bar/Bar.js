@@ -47,7 +47,6 @@ function RunUpdate() {
 }
 
 function Updates() {
- 
   return Widget.Button({
     class_name: "updates",
     on_clicked: () => RunUpdate(),

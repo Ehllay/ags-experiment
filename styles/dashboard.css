@@ -63,7 +63,8 @@
   color: @primary;
 }
 .dashboard-box highlight {
-  background-color: @primary;
+  background: 
+    linear-gradient(to right, @primary, @tertiary) padding-box;
   border-radius: 10px;
 }
 

@@ -103,13 +103,13 @@ label {
 }
 
 .circular-progress {
-    min-width: 36px;
-    min-height: 36px;
-    border-width: 4px;
-    font-size: 5px;
-    margin: 4px;
-    background-color: transparent;
-    color: @primary;
+  min-width: 36px;
+  min-height: 36px;
+  border-width: 4px;
+  font-size: 5px;
+  margin: 4px;
+  background-color: transparent;
+  color: @primary;
 }
 
 .volume-icon {
