@@ -31,21 +31,19 @@ function Avatar() {
 
 function Info() {
   return Widget.Box({
-    class_name: "dashboard-date",
+    css: "font-size: 16px;",
     vertical: true,
     vpack: "center",
-    halign: "start",
+    hpack: "start",
     children: [
       Widget.Label({
         label: date.bind(),
       }),
       Widget.Label({
-        justification: "left",
         class_name: "dashboard-info",
         label: uptime.bind(),
       }),
       Widget.Label({
-        justification: "left",
         class_name: "dashboard-info",
         label: ` ${user}\n󰍹 ${host}`,
       }),
@@ -123,7 +121,6 @@ export function Dashboard() {
   return Widget.Window({
     name: WINDOW_NAME,
     anchor: ['top', 'right'],
-    margins: 6,
     keymode: "on-demand",
     visible: "false",
     setup: self => self.keybind("Escape", () => {

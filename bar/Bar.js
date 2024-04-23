@@ -43,7 +43,7 @@ function Workspaces() {
 }
 
 function RunUpdate() {
-  return Utils.execAsync(`kitty -e bash -c paru && notify-send -i /usr/share/icons/Papirus-Dark/16x16/actions/system-upgrade.svg 'The system has been upgraded'`)
+  return Utils.execAsync(`kitty -e bash -c "paru && notify-send -i /usr/share/icons/Papirus-Dark/16x16/actions/system-upgrade.svg 'The system has been upgraded'"`)
 }
 
 function Updates() {
