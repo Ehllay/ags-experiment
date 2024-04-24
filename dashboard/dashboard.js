@@ -88,6 +88,8 @@ function VolumeSlider(type = 'speaker') {
     icon: Utils.watch(getIcon(type), audio[type], getIcon)
   })
 
+  let vol = audio.speaker.bind('volume').transform(x => `${Math.round(x * 100)}%`);
+
   return Widget.Box({
     visible: audio[type].bind('id').as(p => p != null),
     children: [
@@ -98,6 +100,7 @@ function VolumeSlider(type = 'speaker') {
         drawValue: false,
         onChange: ({ value }) => audio[type].volume = value,
         value: audio[type].bind('volume'),
+        tooltip_text: vol,
       })
     ]
   })
