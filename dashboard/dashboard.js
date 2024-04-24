@@ -34,16 +34,17 @@ function Info() {
     css: "font-size: 16px;",
     vertical: true,
     vpack: "center",
-    hpack: "start",
     children: [
       Widget.Label({
         label: date.bind(),
       }),
       Widget.Label({
         class_name: "dashboard-info",
+        hpack: "start",
         label: uptime.bind(),
       }),
       Widget.Label({
+        hpack: "start",
         class_name: "dashboard-info",
         label: ` ${user}\n󰍹 ${host}`,
       }),
