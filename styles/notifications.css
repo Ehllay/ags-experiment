@@ -26,8 +26,9 @@ window.notification-popups box.notifications {
     border-radius: 11px;
     padding: 1em;
     margin: .5em;
-    border: 1px solid @outline;
-    background-color: @surface;
+    background: 
+      linear-gradient(@surface_container_lowest, @surface) padding-box;
+    border: 2px solid @primary;
 }
 
 .notification.critical {

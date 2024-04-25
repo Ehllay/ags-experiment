@@ -14,6 +14,7 @@ App.config({
         applauncher,
         powermenu,
         Dashboard(),
+        NotificationPopups(),
 
         // you can call it, for each monitor
         // Bar(1)

@@ -110,9 +110,10 @@ export function NotificationPopups(monitor = 0) {
 
     return Widget.Window({
         monitor,
+        vexpand: true,
         name: `notifications${monitor}`,
         class_name: "notification-popups",
-        anchor: ["top", "right"],
+        anchor: ["top", "center"],
         child: Widget.Box({
             css: "min-width: 2px; min-height: 2px;",
             class_name: "notifications",
