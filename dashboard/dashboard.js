@@ -122,15 +122,16 @@ function VolumeBox() {
     class_name: "dashboard-box",
     vertical: true,
     children: [
-      Widget.Box({children: [
-        speakerSlider,
-        Widget.EventBox({
-          //on_primary_click: w => w.child.children[1].revealChild = true,
-          //on_secondary_click: w => w.child.children[1].revealChild = false,
-          class_name: "mixer-button",
-          child: Widget.Icon("pan-down-symbolic")}),
-        //revealer,
+      Widget.Box({
+        children: [
+          speakerSlider,
+          Widget.EventBox({
+            on_primary_click: w => w.parent.parent.children[1].revealChild = true,
+            on_secondary_click: w => w.parent.parent.children[1].revealChild = false,
+            class_name: "mixer-button",
+            child: Widget.Icon("pan-down-symbolic")}),
       ]}),
+      revealer,
       micSlider,
     ]
   })
