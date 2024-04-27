@@ -110,11 +110,27 @@ function VolumeBox() {
   const speakerSlider = VolumeSlider('speaker')
   const micSlider = VolumeSlider('microphone')
 
+
+  const revealer = Widget.Revealer({
+    revealChild: false,
+    transitionDuration: 750,
+    transition: 'slide_down',
+    child: Widget.Label("test"),
+  })
+
   return Widget.Box({
     class_name: "dashboard-box",
     vertical: true,
     children: [
-      speakerSlider,
+      Widget.Box({children: [
+        speakerSlider,
+        Widget.EventBox({
+          //on_primary_click: w => w.child.children[1].revealChild = true,
+          //on_secondary_click: w => w.child.children[1].revealChild = false,
+          class_name: "mixer-button",
+          child: Widget.Icon("pan-down-symbolic")}),
+        //revealer,
+      ]}),
       micSlider,
     ]
   })
