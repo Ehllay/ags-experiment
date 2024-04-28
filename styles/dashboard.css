@@ -44,13 +44,13 @@
   color: @primary;
 }
 
-.dashboard-box scale {
+.volume-slider scale {
   border-radius: 10px;
   margin: 10px;
   background-color: @surface_container_highest;
   color: @primary;
 }
-.dashboard-box highlight {
+.volume-slider highlight {
   background: 
     linear-gradient(to right, @primary, @tertiary) padding-box;
   border-radius: 10px;

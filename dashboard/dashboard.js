@@ -108,6 +108,7 @@ function VolumeSlider(type = 'speaker') {
 }
 
 const MixerItem = (stream) => Widget.Box({
+  css: "padding: 10px 0;",
   children: [
     Widget.Icon({
       class_name: "dashboard-volume-icons",
