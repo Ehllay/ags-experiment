@@ -159,7 +159,6 @@ function Media() {
   })
 }
 
-
 function Volume() {
     const icons = {
         101: "overamplified",

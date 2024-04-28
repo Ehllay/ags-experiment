@@ -95,6 +95,7 @@ function VolumeSlider(type = 'speaker') {
     children: [
       icon,
       Widget.Slider({
+        class_name: "volume-slider",
         hexpand: true,
         cursor: "ew-resize",
         drawValue: false,
@@ -106,6 +107,28 @@ function VolumeSlider(type = 'speaker') {
   })
 }
 
+const MixerItem = (stream) => Widget.Box({
+  children: [
+    Widget.Icon({
+      class_name: "dashboard-volume-icons",
+      tooltip_text: stream.bind("name").as(n => n || ""),
+      icon: stream.bind("name").transform(n => {
+          const name = `${n.toLowerCase()}-symbolic`
+          return Utils.lookUpIcon(name) ? name : "audio-volume-high-symbolic"
+      })
+    }),
+    Widget.Slider({
+      class_name: "volume-slider",
+      hexpand: true,
+      cursor: "ew-resize",
+      drawValue: false,
+      onChange: ({ value }) => stream.volume = value,
+      value: stream.bind('volume'),
+      tooltip_text: stream.bind('volume').transform(x => `${Math.round(x * 100)}%`),
+    }),
+  ]
+})
+
 function VolumeBox() {
   const speakerSlider = VolumeSlider('speaker')
   const micSlider = VolumeSlider('microphone')
@@ -115,7 +138,7 @@ function VolumeBox() {
     revealChild: false,
     transitionDuration: 750,
     transition: 'slide_down',
-    child: Widget.Label("test"),
+    child: Widget.Box({children: audio.bind("apps").as(a => a.map(MixerItem))}),
   })
 
   return Widget.Box({
@@ -126,10 +149,24 @@ function VolumeBox() {
         children: [
           speakerSlider,
           Widget.EventBox({
-            on_primary_click: w => w.parent.parent.children[1].revealChild = true,
-            on_secondary_click: w => w.parent.parent.children[1].revealChild = false,
+            attribute: {toggled: false},
+            setup: (self) => {
+              self.on("button-press-event", (self) => {
+                if (self.attribute.toggled === false) {
+                  self.parent.parent.children[1].revealChild = true;
+                  self.attribute.toggled = true;
+                  self.child.css = "-gtk-icon-transform: rotate(90deg);";
+                }
+                else {
+                  self.parent.parent.children[1].revealChild = false; 
+                  self.attribute.toggled = false;
+                  self.child.css = "-gtk-icon-transform: rotate(0deg);";
+                }
+              });
+            },
             class_name: "mixer-button",
-            child: Widget.Icon("pan-down-symbolic")}),
+            child: Widget.Icon("pan-down-symbolic")
+          }),
       ]}),
       revealer,
       micSlider,
@@ -144,9 +181,11 @@ export function Dashboard() {
     anchor: ['top', 'right'],
     keymode: "on-demand",
     visible: "false",
-    setup: self => self.keybind("Escape", () => {
-      App.closeWindow(WINDOW_NAME)
-    }),
+    setup: self => {
+      self.keybind("Escape", () => {
+        App.closeWindow(WINDOW_NAME)
+      })
+    },
     child: Widget.Box({
       class_name: "dashboard",
       vertical: true,

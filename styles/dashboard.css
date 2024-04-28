@@ -60,3 +60,10 @@
   padding: 0 10px;
   color: @primary;
 }
+
+.mixer-button {
+  transition: 0.2s;
+}
+.mixer-button:hover {
+  color: @on_surface_variant;
+}
