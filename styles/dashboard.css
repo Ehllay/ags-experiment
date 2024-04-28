@@ -67,3 +67,7 @@
 .mixer-button:hover {
   color: @on_surface_variant;
 }
+
+.mixer-item {
+  margin: 10px 0 2px 0;
+}

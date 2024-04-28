@@ -108,7 +108,7 @@ function VolumeSlider(type = 'speaker') {
 }
 
 const MixerItem = (stream) => Widget.Box({
-  css: "padding: 10px 0;",
+  class_name: "mixer-item",
   children: [
     Widget.Icon({
       class_name: "dashboard-volume-icons",
@@ -139,7 +139,10 @@ function VolumeBox() {
     revealChild: false,
     transitionDuration: 750,
     transition: 'slide_down',
-    child: Widget.Box({children: audio.bind("apps").as(a => a.map(MixerItem))}),
+    child: Widget.Box({
+      vertical: true,
+      children: audio.bind("apps").as(a => a.map(MixerItem))
+    }),
   })
 
   return Widget.Box({
