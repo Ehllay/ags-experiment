@@ -113,7 +113,7 @@ const MixerItem = (stream) => Widget.Box({
   children: [
     Widget.Icon({
       class_name: "dashboard-volume-icons",
-      tooltip_text: stream.bind("name").as(n => n || ""),
+      tooltip_text: stream.bind("description").as(n => n || ""),
       icon: stream.bind("name").transform(n => {
           const name = `${n.toLowerCase()}-symbolic`
           return Utils.lookUpIcon(name) ? name : "audio-volume-high-symbolic"

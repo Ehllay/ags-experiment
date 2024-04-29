@@ -237,9 +237,11 @@ function BatteryLabel() {
 function Network() {
    return Widget.Box({
       children: [
-        Widget.Icon({
-            icon: network.wired.bind('icon_name'),
-        }),
+        Widget.Icon().hook(network, self => {
+          const icon = network[network.primary || "wifi"]?.icon_name
+          self.icon = icon || ""
+          self.visible = !!icon
+      }),
       ],
     })
 }
