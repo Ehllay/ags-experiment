@@ -235,14 +235,14 @@ function BatteryLabel() {
 }
 
 function Network() {
+  const icon = Widget.Icon().hook(network, self => {
+    const icon = network[network.primary || "wifi"]?.icon_name
+    self.icon = icon || ""
+    self.visible = !!icon
+  })
+
    return Widget.Box({
-      children: [
-        Widget.Icon().hook(network, self => {
-          const icon = network[network.primary || "wifi"]?.icon_name
-          self.icon = icon || ""
-          self.visible = !!icon
-      }),
-      ],
+      children: [ icon ],
     })
 }
 
