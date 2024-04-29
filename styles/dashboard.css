@@ -44,6 +44,10 @@
   color: @primary;
 }
 
+.slider-box {
+  margin: 5px 0;
+}
+
 .volume-slider scale {
   border-radius: 10px;
   margin: 10px;

@@ -91,6 +91,7 @@ function VolumeSlider(type = 'speaker') {
   let vol = audio.speaker.bind('volume').transform(x => `${Math.round(x * 100)}%`);
 
   return Widget.Box({
+    class_name: "slider-box",
     visible: audio[type].bind('id').as(p => p != null),
     children: [
       icon,
@@ -154,6 +155,7 @@ function VolumeBox() {
           speakerSlider,
           Widget.EventBox({
             attribute: {toggled: false},
+            visible: audio.bind("apps").as(p => p.length > 0),
             setup: (self) => {
               self.on("button-press-event", (self) => {
                 if (self.attribute.toggled === false) {
