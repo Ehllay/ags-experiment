@@ -3,6 +3,7 @@
   padding: 5px;
   min-width: 400px;
   border-radius: 10px;
+  background-color: @surface_container_high;
 }
 
 .player .img {
@@ -38,6 +39,11 @@
 .player scale.position slider {
     all: unset;
 }
+
+.icon {
+  margin: -10px;
+}
+
 
 .player button {
     font-size: 25px;
