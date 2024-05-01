@@ -268,7 +268,7 @@ function SysTray() {
 function QuickSettings() {
   return Widget.EventBox({
     class_name: "quick-settings",
-    on_secondary_click: () => App.toggleWindow("dashboard"),
+    on_primary_click: () => App.toggleWindow("dashboard"),
     child: Widget.Box({
       children: [
         Network(),
