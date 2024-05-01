@@ -7,7 +7,7 @@ tooltip,
 box.left,
 box.center,
 box.right {
-  margin: 5px 5px 0px 5px;
+  margin: 4px 5px 0px 5px;
 }
 
 tooltip {
@@ -19,8 +19,7 @@ tooltip {
   border-bottom-color: alpha(@background, 0.75);
 }
 
-box.launcher,
-box.workspaces,
+box.l-ws-box,
 button.updates,
 box.media,
 box.center,
@@ -38,8 +37,6 @@ box.right {
 }
 
 button.launcher {
-  background-image: linear-gradient(@surface_container_lowest, alpha(@surface, 0.75));
-  background-size: cover;
   border-radius: 15px;
   font-family: "JetbrainsMono NF", monospace;
   padding-right: 11px;
@@ -94,7 +91,7 @@ button:active {
 }
 
 button:hover {
-  background-color: @surface_container_highest;
+  background-color: @surface_container;
 }
 
 label {

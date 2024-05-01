@@ -282,8 +282,13 @@ function Left() {
     class_name: "left",
     spacing: 8,
     children: [
-      Launcher(),
-      Workspaces(),
+      Widget.Box({
+        class_name: "l-ws-box",
+        children: [
+          Launcher(),
+          Workspaces(),
+        ]
+      }),
       Media(),
       Updates(),
     ],
