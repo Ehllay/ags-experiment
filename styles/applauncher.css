@@ -21,6 +21,12 @@ window.applauncher {
   background-color: @surface_variant;
 }
 
+.applauncher-button:focused {
+  color: @primary_fixed_dim;
+  background-color: @surface_container_highest;
+}
+
+
 .applauncher-entry {
   padding: 5px;
   font-weight: bold;
