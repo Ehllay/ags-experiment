@@ -2,7 +2,7 @@ window.applauncher {
   padding: 0px;
   min-height: 40px;
     background: 
-    linear-gradient(@surface_container_lowest, @surface) padding-box,
+    linear-gradient(@surface_container_lowest, alpha(@surface, 0.75)) padding-box,
     linear-gradient(to bottom right, @primary, @secondary) border-box;
 
   border-radius: 15px;
