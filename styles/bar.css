@@ -4,6 +4,7 @@ window.bar {
 }
 
 tooltip,
+box.media,
 box.right {
   margin: 4px 5px 0px 5px;
 }
@@ -51,7 +52,6 @@ button.launcher:hover {
 }
 
 box.media {
-  margin-top: 2px;
   border-radius: 25px;
   padding: 0px 5px;
   transition: 0.2s;
@@ -85,6 +85,9 @@ box.clock {
   outline: 1px double @primary;
   background-color: @on_tertiary;
 }
+.media-button:hover {
+  background-color: @on_tertiary_fixed_variant;
+}
 
 button {
     background-color: transparent;
@@ -105,8 +108,8 @@ button:active {
   color: @secondary;
 }
 
-button:hover {
-  background-color: @surface_container;
+button:hover:not(.media-button) {
+  background-image: radial-gradient(@surface_container, @surface_container_highest);
 }
 
 label {
@@ -148,7 +151,7 @@ box.center {
 }
 
 .systray:hover {
-  background-color: @surface_container_highest;
+  background-image: radial-gradient(@surface_container, @surface_container_highest);
 }
 
 .quick-settings box {
