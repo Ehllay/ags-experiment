@@ -7,6 +7,7 @@ const battery = await Service.import("battery")
 const systemtray = await Service.import("systemtray")
 
 import { Dashboard } from "../dashboard/dashboard.js"
+import { RoundedAngleEnd } from "../corners/RoundedAngle.js"
 
 const date = Variable("", {
     poll: [1000, 'date "+%H:%M"'],
@@ -283,7 +284,6 @@ function QuickSettings() {
 function Left() {
   return Widget.Box({
     class_name: "left",
-    spacing: 8,
     children: [
       Widget.Box({
         class_name: "l-ws-box",
@@ -292,6 +292,7 @@ function Left() {
           Workspaces(),
         ]
       }),
+      RoundedAngleEnd("topright"),
       Media(),
       Updates(),
     ],
@@ -301,25 +302,30 @@ function Left() {
 function Center() {
     return Widget.Box({
         class_name: "center",
-        spacing: 8,
         visible: hyprland.active.client.bind("title").as(t => t != ""),
         children: [
-            ClientTitle(),
+            RoundedAngleEnd("topleft"),
+            Widget.Box({
+              children: [ClientTitle()]}),
+            RoundedAngleEnd("topright"),
         ],
     })
 }
 
 function Right() {
     return Widget.Box({
-        class_name: "right",
         hpack: "end",
-        spacing: 8,
         children: [
-            Notification(),
-            SysTray(),
-            //BatteryLabel(),
-            QuickSettings(),
-            Clock(),
+            RoundedAngleEnd("topleft"),
+            Widget.Box({
+            class_name: "right",
+            children: [
+              Notification(),
+              SysTray(),
+              //BatteryLabel(),
+              QuickSettings(),
+              Clock(),
+            ]})
         ],
     })
 }

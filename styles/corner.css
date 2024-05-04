@@ -1,0 +1,5 @@
+.angle {
+  background: 
+    linear-gradient(@surface_container_lowest, alpha(@surface, 0.75)) padding-box;
+  background-size: cover;
+}

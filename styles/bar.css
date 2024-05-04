@@ -4,8 +4,6 @@ window.bar {
 }
 
 tooltip,
-box.left,
-box.center,
 box.right {
   margin: 4px 5px 0px 5px;
 }
@@ -22,7 +20,7 @@ tooltip {
 box.l-ws-box,
 button.updates,
 box.media,
-box.center,
+box.center label,
 box.notification,
 box.systray,
 box.right {
@@ -34,6 +32,11 @@ box.right {
   border-bottom-color: alpha(@background, 0.75);
   background-image: linear-gradient(@surface_container_lowest, alpha(@surface, 0.75));
   background-size: cover;
+}
+
+box.l-ws-box {
+  margin: 0;
+  border-radius: 0px;
 }
 
 button.launcher {
@@ -48,6 +51,7 @@ button.launcher:hover {
 }
 
 box.media {
+  margin-top: 2px;
   border-radius: 25px;
   padding: 0px 5px;
   transition: 0.2s;
@@ -57,6 +61,17 @@ button.updates {
   padding: 0px 5px 0px 10px;
   color: @error;
   border: 2px solid @error;
+}
+
+box.center label{
+  padding: 0 10px;
+  border-radius: 0px;
+  margin: 0px;
+}
+
+box.right {
+  margin: 0px;
+  border-radius: 0px;
 }
 
 box.clock {

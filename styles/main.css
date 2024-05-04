@@ -13,6 +13,7 @@
 
 @import "../../matugen/colors/colors-css.css";
 @import "./bar.css";
+@import "./corner.css";
 @import "./notifications.css";
 @import "./applauncher.css";
 @import "./powermenu.css";
