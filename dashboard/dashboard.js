@@ -36,6 +36,7 @@ function Info() {
     vpack: "center",
     children: [
       Widget.Label({
+        class_name: "dashboard-date",
         label: date.bind(),
       }),
       Widget.Label({

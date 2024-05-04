@@ -27,6 +27,10 @@
   border: 4px solid @outline;
 }
 
+.dashboard-date {
+  color: @on_surface;
+}
+
 .dashboard-info {
   font-family: "JetbrainsMono NF", monospace;
   color: @outline;
