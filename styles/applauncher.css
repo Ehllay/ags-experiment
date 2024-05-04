@@ -21,7 +21,7 @@ window.applauncher {
   background-color: @surface_variant;
 }
 
-.applauncher-button:focused {
+.applauncher-button:focus {
   color: @primary_fixed_dim;
   background-color: @surface_container_highest;
 }

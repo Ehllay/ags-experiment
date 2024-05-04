@@ -324,7 +324,7 @@ function Right() {
     })
 }
 
-export default (monitor = 0) => Widget.Window ({
+export default monitor => Widget.Window ({
     name: `bar-${monitor}`, // name has to be unique
     class_name: "bar",
     monitor,

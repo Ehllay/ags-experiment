@@ -1,4 +1,5 @@
 import Gio from "gi://Gio";
+import Gdk from 'gi://Gdk';
 
 import Bar from "./bar/Bar.js"
 import { NotificationPopups } from "./notifications/Notifications.js"
@@ -6,18 +7,25 @@ import { applauncher } from "./applauncher/applauncher.js"
 import { powermenu } from "./powermenu/powermenu.js";
 import { Dashboard } from "./dashboard/dashboard.js";
 
+
+function range(length, start = 1) {
+    return Array.from({ length }, (_, i) => i + start);
+}
+
+function forMonitors(widget) {
+    const n = Gdk.Display.get_default()?.get_n_monitors() || 1;
+    return range(n, 0).map(widget).flat(1);
+}
+
 App.config({
     style: "./styles/main.css",
     windows: [
-        Bar(0),
-        //NotificationPopups(),
+        ...forMonitors(Bar),
         applauncher,
         powermenu,
         Dashboard(),
-        NotificationPopups(),
 
-        // you can call it, for each monitor
-        // Bar(1)
+        //NotificationPopups(),
     ],
 })
 
