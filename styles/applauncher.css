@@ -9,6 +9,14 @@ window.applauncher {
   border: 2px solid transparent;
 }
 
+.favorite-apps {
+  font-size: 64px;
+  margin: 20px;
+}
+.favorite-apps button {
+  background-color: transparent;
+}
+
 .applauncher-button {
   background-color: @surface_container;
   padding: 0 8px;

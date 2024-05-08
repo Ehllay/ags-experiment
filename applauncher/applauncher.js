@@ -1,6 +1,40 @@
 const { query } = await Service.import("applications")
 const WINDOW_NAME = "applauncher"
 
+
+const FavoriteApp = app => Widget.Button({
+  class_name: "applauncher-button",
+  on_clicked: () => {
+    App.closeWindow(WINDOW_NAME)
+    app.launch()
+  },
+  attribute: { app },
+  child: Widget.Icon({
+    icon: app.icon_name || "",
+  })
+})
+
+function FavoriteApps() {
+  const apps = [
+    "firefox",
+    "nautilus",
+    "kitty",
+  ]
+
+  return Widget.Box({
+    spacing: 8,
+    class_name: "favorite-apps",
+    hpack: "center",
+    hexpand: true,
+    children: [
+      query("firefox").map(FavoriteApp)[0],
+      query("nautilus").map(FavoriteApp)[0],
+      query("kitty").map(FavoriteApp)[0],
+      query("neovide").map(FavoriteApp)[0],
+    ]
+  })
+}
+
 /** @param {import('resource:///com/github/Aylur/ags/service/applications.js').Application} app */
 const AppItem = app => Widget.Button({
     class_name: "applauncher-button",
@@ -70,6 +104,7 @@ const Applauncher = ({ width = 500, height = 500, spacing = 12 }) => {
         vertical: true,
         css: `margin: ${spacing * 2}px;`,
         children: [
+            FavoriteApps(),
             entry,
 
             // wrap the list in a scrollable

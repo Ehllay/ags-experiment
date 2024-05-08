@@ -8,7 +8,7 @@ export const RoundedAngleEnd = (place) => Widget.DrawingArea({
     widget.set_size_request(ratio * r, r);
     widget.on("draw", (widget, cr) => {
       const context = widget.get_style_context();
-      const border_color = context.get_property("color", Gtk.StateFlags.NORMAL);
+      const border_color = context.get_property("border-color", Gtk.StateFlags.NORMAL);
       const border_width = context.get_border(Gtk.StateFlags.NORMAL).bottom;
       const r = widget.get_allocated_height();
       widget.set_size_request(ratio * r, r);
