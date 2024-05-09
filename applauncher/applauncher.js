@@ -4,6 +4,7 @@ const WINDOW_NAME = "applauncher"
 
 const FavoriteApp = app => Widget.Button({
   class_name: "applauncher-button",
+  tooltip_text: app.name,
   on_clicked: () => {
     App.closeWindow(WINDOW_NAME)
     app.launch()
@@ -15,12 +16,6 @@ const FavoriteApp = app => Widget.Button({
 })
 
 function FavoriteApps() {
-  const apps = [
-    "firefox",
-    "nautilus",
-    "kitty",
-  ]
-
   return Widget.Box({
     spacing: 8,
     class_name: "favorite-apps",
@@ -28,7 +23,7 @@ function FavoriteApps() {
     hexpand: true,
     children: [
       query("firefox").map(FavoriteApp)[0],
-      query("nautilus").map(FavoriteApp)[0],
+      query("org.gnome.nautilus").map(FavoriteApp)[0],
       query("kitty").map(FavoriteApp)[0],
       query("neovide").map(FavoriteApp)[0],
     ]
