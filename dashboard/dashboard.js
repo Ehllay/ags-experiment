@@ -64,6 +64,7 @@ function PowermenuButton() {
   })
 }
 
+/** @param {'speaker' | 'microphone'} type */
 function VolumeSlider(type = 'speaker') {
   const icons = {
         101: "overamplified",

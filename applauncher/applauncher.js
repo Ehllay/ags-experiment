@@ -16,17 +16,19 @@ const FavoriteApp = app => Widget.Button({
 })
 
 function FavoriteApps() {
-  return Widget.Box({
+  const apps = [
+    "firefox",
+    "org.gnome.nautilus",
+    "kitty",
+    "neovide",
+  ]
+
+ return Widget.Box({
     spacing: 8,
     class_name: "favorite-apps",
     hpack: "center",
     hexpand: true,
-    children: [
-      query("firefox").map(FavoriteApp)[0],
-      query("org.gnome.nautilus").map(FavoriteApp)[0],
-      query("kitty").map(FavoriteApp)[0],
-      query("neovide").map(FavoriteApp)[0],
-    ]
+    children:apps.map(f => query(f)?.[0]).filter(f => f).map(FavoriteApp)
   })
 }
 
