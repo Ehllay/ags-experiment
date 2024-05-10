@@ -195,7 +195,7 @@ export function Dashboard() {
       })
     },
     child: Widget.Box({
-      class_name: "dashboard",
+      class_name: "dashboard window-bg",
       vertical: true,
       children: [
         Widget.CenterBox({

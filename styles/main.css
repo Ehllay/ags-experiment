@@ -2,6 +2,17 @@
   all: unset;
 }
 
+menu,
+.window-bg {
+  background: 
+    linear-gradient(@surface_container_lowest, alpha(@surface, 0.75)) padding-box,
+    linear-gradient(to bottom right, @primary, @secondary) border-box;
+  color: @on_surface;
+  border: 4px solid transparent;
+  border-radius: 10px;
+
+}
+
 .corner {
   background-color: alpha(@surface, 0.75);
   border-radius: 1rem;

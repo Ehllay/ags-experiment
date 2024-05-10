@@ -108,6 +108,7 @@ button:active {
   color: @secondary;
 }
 
+systray:hover,
 button:hover:not(.media-button) {
   background-image: radial-gradient(@surface_container, @surface_container_highest);
 }
@@ -150,10 +151,6 @@ box.center {
   background-color: transparent;
 }
 
-.systray:hover {
-  background-image: radial-gradient(@surface_container, @surface_container_highest);
-}
-
 .quick-settings box {
   transition: 0.5s;
   padding: 0 5px;
@@ -166,12 +163,6 @@ box.center {
 menu {
   padding: 15px;
   font-size: 18px;
-  background: 
-    linear-gradient(@surface_container_lowest, alpha(@surface, 0.75)) padding-box,
-    linear-gradient(to bottom right, @primary, @secondary) border-box;
-  color: @on_surface;
-  border: 4px solid transparent;
-  border-radius: 10px;
 }
 
 menuitem {
