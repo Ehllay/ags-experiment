@@ -1,9 +1,10 @@
 import Gio from "gi://Gio";
 import Gdk from 'gi://Gdk';
 
-import Bar from "./widgets/bar/Bar.js"
-import { NotificationPopups } from "./widgets/notifications/Notifications.js"
-import { applauncher } from "./widgets/applauncher/applauncher.js"
+import Bar from "./widgets/bar/Bar.js";
+import { NotificationPopups } from "./widgets/notifications/Notifications.js";
+import { applauncher } from "./widgets/applauncher/applauncher.js";
+import { CalendarWidget } from "./widgets/calendar/calendar.js";
 import { powermenu } from "./widgets/powermenu/powermenu.js";
 import { Dashboard } from "./widgets/dashboard/dashboard.js";
 
@@ -24,6 +25,7 @@ App.config({
         applauncher,
         powermenu,
         Dashboard(),
+        CalendarWidget(),
 
         //NotificationPopups(),
     ],

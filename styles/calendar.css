@@ -1,0 +1,36 @@
+.calendar {
+  margin: 10px;
+  padding: 5px;
+  font-size: 20px;
+}
+
+calendar {
+  margin: 10px;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+calendar.header {
+  background-color: @surface_container;
+}
+
+calendar:indeterminate {
+  color: @surface_container_highest;
+}
+
+calendar.button {
+  transition: 0.2s;
+  border-radius: 10px;
+  margin: 10px;
+}
+calendar:hover {
+  background-image: radial-gradient(@surface_container, @surface_container_highest);
+}
+
+calendar.highlight {
+  color: @outline;
+}
+
+calendar:selected {
+  background-image: radial-gradient(@surface_container, @surface_container_highest);
+}
