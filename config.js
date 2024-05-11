@@ -1,11 +1,11 @@
 import Gio from "gi://Gio";
 import Gdk from 'gi://Gdk';
 
-import Bar from "./bar/Bar.js"
-import { NotificationPopups } from "./notifications/Notifications.js"
-import { applauncher } from "./applauncher/applauncher.js"
-import { powermenu } from "./powermenu/powermenu.js";
-import { Dashboard } from "./dashboard/dashboard.js";
+import Bar from "./widgets/bar/Bar.js"
+import { NotificationPopups } from "./widgets/notifications/Notifications.js"
+import { applauncher } from "./widgets/applauncher/applauncher.js"
+import { powermenu } from "./widgets/powermenu/powermenu.js";
+import { Dashboard } from "./widgets/dashboard/dashboard.js";
 
 
 function range(length, start = 1) {

@@ -8,6 +8,7 @@ More important items are in the top
 - [ ] Notifications, notification center and DND
 - [ ] Clipboard manager
 - [ ] WiFi and Bluetooth dashboard buttons
+- [ ] Calendar
 - [ ] Emoji panel
 - [ ] Greeter
 - [ ] Lockscreen
